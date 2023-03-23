@@ -2,7 +2,8 @@
 
 This repository is the official implementation for P3Former.
 
-![main.figure_crop.pdf](https://github.com/SmartBot-PJLab/P3Former/files/11051205/main.figure_crop.pdf)
+![main figure](https://user-images.githubusercontent.com/45515569/227226959-35f887e0-453b-4ac8-81c0-cb4b2f79333c.png)
+
 
 ## Introduction
 
