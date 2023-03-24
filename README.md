@@ -1,9 +1,6 @@
 # P3Former: Position-Guided Point Cloud Panoptic Segmentation Transformer
 
-This repository is the official implementation for P3Former.
-
 ![main figure](https://user-images.githubusercontent.com/45515569/227226959-35f887e0-453b-4ac8-81c0-cb4b2f79333c.png)
-
 
 ## Introduction
 
