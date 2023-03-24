@@ -7,7 +7,7 @@ This repository is the official implementation for P3Former.
 
 ## Introduction
 
-This is an official release of the paper: `Position-Guided Point Cloud Panoptic Segmentation Transformer`.
+This is an official release of [Position-Guided Point Cloud Panoptic Segmentation Transformer](https://arxiv.org/abs/2303.13509).
 
 
 ## Abstract
@@ -26,7 +26,7 @@ The source code and models are available at https://github.com/SmartBot-PJLab/P3
 
 ## Results
 
-### SemanticKITTI test
+### SemanticKITTI test without TTA
 
 | $\mathrm{PQ}$ | $\mathrm{PQ^{\dagger}}$ | $\mathrm{RQ}$ | $\mathrm{SQ}$ | $\mathrm{PQ}^{\mathrm{Th}}$ | $\mathrm{PQ}^{\mathrm{St}}$ | $\mathrm{mIoU}$ |
 | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: |
