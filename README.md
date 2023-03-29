@@ -46,4 +46,4 @@ The code is still going through large refactoring based on [MMDetection3D](https
 ```
 
 ### Acknowledgements
-We thank the contributors of [MMDetection3D](https://github.com/open-mmlab/mmdetection3d) and the authors of [Cylinder3D](https://github.com/xinge008/Cylinder3D) for their great work.
+We thank the contributors of [MMDetection3D](https://github.com/open-mmlab/mmdetection3d) and the authors of [Cylinder3D](https://github.com/xinge008/Cylinder3D) for their great work, [K-Net](https://github.com/ZwwWayne/K-Net).
