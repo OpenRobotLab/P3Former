@@ -32,7 +32,7 @@ The source code and models are available at https://github.com/SmartBot-PJLab/P3
 
 ## Code Release
 
-The code is still going through large refactoring. Please stay tuned for the clean release.
+The code is still going through large refactoring based on [MMDetection3D](https://github.com/open-mmlab/mmdetection3d). Please stay tuned for the clean release.
 
 ## Citation
 
@@ -44,3 +44,6 @@ The code is still going through large refactoring. Please stay tuned for the cle
     year={2023}
 }
 ```
+
+### Acknowledgements
+We thank the contributors of [MMDetection3D](https://github.com/open-mmlab/mmdetection3d) and the authors of [Cylinder3D](https://github.com/xinge008/Cylinder3D) for their great work.
