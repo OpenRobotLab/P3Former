@@ -39,7 +39,7 @@ The source code and models are available at https://github.com/SmartBot-PJLab/P3
 
 ## Installation
 
-Please follow install.sh.
+Please follow [install.sh](https://github.com/SmartBot-PJLab/P3Former/blob/main/install.sh).
 
 ## Usage
 
@@ -96,4 +96,4 @@ sh dist_test.sh $CONFIG $CHECKPOINT $GPUS
 
 ## Acknowledgements
 
-We thank the contributors of [MMDetection3D](https://github.com/open-mmlab/mmdetection3d) and the authors of [Cylinder3D](https://github.com/xinge008/Cylinder3D), [K-Net](https://github.com/ZwwWayne/K-Net) for their great work.
+We thank the contributors of [MMDetection3D](https://github.com/open-mmlab/mmdetection3d) and the authors of [Cylinder3D](https://github.com/xinge008/Cylinder3D) and [K-Net](https://github.com/ZwwWayne/K-Net) for their great work.
