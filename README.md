@@ -23,16 +23,64 @@ The source code and models are available at https://github.com/SmartBot-PJLab/P3
 
 ## Results
 
-### SemanticKITTI test without TTA
+### SemanticKITTI test
 
-| $\mathrm{PQ}$ | $\mathrm{PQ^{\dagger}}$ | $\mathrm{RQ}$ | $\mathrm{SQ}$ | $\mathrm{PQ}^{\mathrm{Th}}$ | $\mathrm{PQ}^{\mathrm{St}}$ | $\mathrm{mIoU}$ |
-| :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: |
-| 64.9 | 70.0 | 75.9 | 84.9 | 67.1 | 63.3 | 68.3 |
+| $\mathrm{PQ}$ | $\mathrm{PQ^{\dagger}}$ | $\mathrm{RQ}$ | $\mathrm{SQ}$ | $\mathrm{PQ}^{\mathrm{Th}}$ | $\mathrm{PQ}^{\mathrm{St}}$ | Download | Config |
+| :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: |
+| 65.3 | 67.8 | 74.9 | 86.6 | 67.4 | 63.7 | [model](https://drive.google.com/drive/folders/1RBDWV-oWOQsDAhNE8Z7SMLWsriLrpWCx?usp=sharing) | [config](https://github.com/SmartBot-PJLab/P3Former/blob/semantickitti/configs/p3former/p3former_8xb2_3x_semantickitti_trainval.py) |
 
+### SemanticKITTI validation
 
-## Code Release
+| $\mathrm{PQ}$ | $\mathrm{PQ^{\dagger}}$ | $\mathrm{RQ}$ | $\mathrm{SQ}$ | $\mathrm{PQ}^{\mathrm{Th}}$ | $\mathrm{PQ}^{\mathrm{St}}$ | Download | Config |
+| :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: |
+| 62.6 | 66.2 | 72.4 | 76.2 | 69.4 | 57.7 | [model](https://drive.google.com/drive/folders/1RBDWV-oWOQsDAhNE8Z7SMLWsriLrpWCx?usp=sharing) | [config](https://github.com/SmartBot-PJLab/P3Former/blob/semantickitti/configs/p3former/p3former_8xb2_3x_semantickitti.py) |
 
-The code is still going through large refactoring based on [MMDetection3D](https://github.com/open-mmlab/mmdetection3d). Please stay tuned for the clean release.
+* Pretraining a backbone is helpful to stablize the the training process and get slightly better results. You can pretrain a model with [config](https://github.com/SmartBot-PJLab/P3Former/blob/semantickitti/configs/cylinder3d/cylinder3d_8xb2_3x_semantickitti.py).
+
+## Installation
+
+Please follow install.sh.
+
+## Usage
+
+### Data preparation
+
+#### Semantickitti
+
+```text
+data/
+├── semantickitti
+│   ├── sequences
+│   │   ├── 00
+│   │   |   ├── labels
+│   │   |   ├── velodyne
+│   │   ├── 01
+│   │   ├── ...
+│   ├── semantickitti_infos_train.pkl
+│   ├── semantickitti_infos_val.pkl
+│   ├── semantickitti_infos_test.pkl
+
+```
+
+You can generate *.pkl by excuting
+
+```
+python tools/create_data.py semantickitti --root-path data/semantickitti --out-dir data/semantickitti --extra-tag semantickitti
+```
+
+## Training and testing
+
+```bash
+# train
+sh dist_train.sh $CONFIG $GPUS
+
+# val
+sh dist_test.sh $CONFIG $CHECKPOINT $GPUS
+
+# test
+sh dist_test.sh $CONFIG $CHECKPOINT $GPUS
+
+```
 
 ## Citation
 
@@ -45,5 +93,7 @@ The code is still going through large refactoring based on [MMDetection3D](https
 }
 ```
 
-### Acknowledgements
+
+## Acknowledgements
+
 We thank the contributors of [MMDetection3D](https://github.com/open-mmlab/mmdetection3d) and the authors of [Cylinder3D](https://github.com/xinge008/Cylinder3D), [K-Net](https://github.com/ZwwWayne/K-Net) for their great work.
