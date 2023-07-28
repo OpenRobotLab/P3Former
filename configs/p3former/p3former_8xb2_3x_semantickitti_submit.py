@@ -63,7 +63,7 @@ test_pipeline = [
         load_dim=4,
         use_dim=4,
         backend_args=None),
-    dict(type='Pack3DDetInputs', keys=['points', 'lidar_path'])
+    dict(type='_Pack3DDetInputs', keys=['points', 'lidar_path'])
 ]
 
 test_dataloader = dict(
@@ -75,7 +75,7 @@ test_dataloader = dict(
         times=1,
         dataset=dict(
             pipeline=test_pipeline,
-            ann_file='semantickitti_infos_test.pkl'))
+            ann_file='semantickitti_infos_mini.pkl'))
 )
 
 test_evaluator = dict(submission_prefix='semantickitti_submission')
@@ -93,5 +93,6 @@ custom_imports = dict(
         'datasets.semantickitti_dataset',
         'datasets.transforms.loading',
         'datasets.transforms.transforms_3d',
+        'datasets.transforms.formating',
     ],
     allow_failed_imports=False)
