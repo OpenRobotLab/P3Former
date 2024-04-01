@@ -18,12 +18,29 @@ import mmengine
 import numpy as np
 from nuscenes.nuscenes import NuScenes
 
-from mmdet3d.datasets.convert_utils import (convert_annos,
-                                            get_kitti_style_2d_boxes,
-                                            get_nuscenes_2d_boxes)
-from mmdet3d.datasets.utils import convert_quaternion_to_matrix
-from mmdet3d.structures import points_cam2img
+# from mmdet3d.datasets.convert_utils import (convert_annos,
+#                                             get_kitti_style_2d_boxes,
+#                                             get_nuscenes_2d_boxes)
+# from mmdet3d.datasets.utils import convert_quaternion_to_matrix
+# from mmdet3d.structures import points_cam2img
 
+from pyquaternion import Quaternion
+
+def get_kitti_style_2d_boxes():
+    pass
+
+def convert_annos():
+    pass
+
+def convert_quaternion_to_matrix(quaternion: list,
+                                 translation: list = None) -> list:
+    """Compute a transform matrix by given quaternion and translation
+    vector."""
+    result = np.eye(4)
+    result[:3, :3] = Quaternion(quaternion).rotation_matrix
+    if translation is not None:
+        result[:3, 3] = np.array(translation)
+    return result.astype(np.float32).tolist()
 
 def get_empty_instance():
     """Empty annotation for single instance."""
@@ -234,14 +251,14 @@ def generate_nuscenes_camera_instances(info, nusc):
 
     empty_multicamera_instance = get_empty_multicamera_instances(camera_types)
 
-    for cam in camera_types:
-        cam_info = info['cams'][cam]
-        # list[dict]
-        ann_infos = get_nuscenes_2d_boxes(
-            nusc,
-            cam_info['sample_data_token'],
-            visibilities=['', '1', '2', '3', '4'])
-        empty_multicamera_instance[cam] = ann_infos
+    # for cam in camera_types:
+    #     cam_info = info['cams'][cam]
+    #     # list[dict]
+    #     ann_infos = get_nuscenes_2d_boxes(
+    #         nusc,
+    #         cam_info['sample_data_token'],
+    #         visibilities=['', '1', '2', '3', '4'])
+    #     empty_multicamera_instance[cam] = ann_infos
 
     return empty_multicamera_instance
 
@@ -481,10 +498,10 @@ def update_kitti_infos(pkl_path, out_dir):
                 src = np.array([0.5, 1.0, 0.5])
 
                 center_3d = loc + dims * (dst - src)
-                center_2d = points_cam2img(
-                    center_3d.reshape([1, 3]), cam2img, with_depth=True)
-                center_2d = center_2d.squeeze().tolist()
-                empty_instance['center_2d'] = center_2d[:2]
+                # center_2d = points_cam2img(
+                #     center_3d.reshape([1, 3]), cam2img, with_depth=True)
+                # center_2d = center_2d.squeeze().tolist()
+                # empty_instance['center_2d'] = center_2d[:2]
                 empty_instance['depth'] = center_2d[2]
 
                 gt_bboxes_3d = np.concatenate([loc, dims, rots]).tolist()

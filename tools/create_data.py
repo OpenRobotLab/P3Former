@@ -85,8 +85,8 @@ parser.add_argument(
 args = parser.parse_args()
 
 if __name__ == '__main__':
-    from mmdet3d.utils import register_all_modules
-    register_all_modules()
+    # from mmdet3d.utils import register_all_modules
+    # register_all_modules()
 
     if args.dataset == 'nuscenes' and args.version != 'v1.0-mini':
         train_version = f'{args.version}-trainval'
