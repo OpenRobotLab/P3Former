@@ -31,13 +31,13 @@ The source code and models are available at https://github.com/SmartBot-PJLab/P3
 
 ## Installation
 
-Please follow [install.sh](https://github.com/SmartBot-PJLab/P3Former/blob/main/install.sh).
+Please follow [requirement.txt](https://github.com/SmartBot-PJLab/P3Former/blob/main/install.sh).
 
 ## Usage
 
 ### Data preparation
 
-#### Semantickitti
+#### NuScenes
 
 ```text
 data/
@@ -70,7 +70,7 @@ data/
 You can generate *.pkl by excuting
 
 ```
-python tools/create_data.py semantickitti --root-path data/semantickitti --out-dir data/semantickitti --extra-tag semantickitti
+python tools/create_data.py nuscenes --root-path data/nuscenes --out-dir data/nuscenes --extra-tag nuscenes
 ```
 
 ## Training and testing

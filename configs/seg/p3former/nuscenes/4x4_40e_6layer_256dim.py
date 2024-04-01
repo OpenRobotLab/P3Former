@@ -173,7 +173,7 @@ model = dict(
     is_fix_backbone=is_fix_backbone,
 )
 
-data_root = 'datasets/nuscenes/'
+data_root = 'data/nuscenes/'
 samples_per_gpu = 4
 times = 1
 

@@ -12,8 +12,24 @@ from nuscenes.utils.geometry_utils import view_points
 from pyquaternion import Quaternion
 from shapely.geometry import MultiPoint, box
 
-from mmdet3d.datasets.convert_utils import NuScenesNameMapping
-from mmdet3d.structures import points_cam2img
+# from mmdet3d.structures import points_cam2img
+
+NuScenesNameMapping = {
+    'movable_object.barrier': 'barrier',
+    'vehicle.bicycle': 'bicycle',
+    'vehicle.bus.bendy': 'bus',
+    'vehicle.bus.rigid': 'bus',
+    'vehicle.car': 'car',
+    'vehicle.construction': 'construction_vehicle',
+    'vehicle.motorcycle': 'motorcycle',
+    'human.pedestrian.adult': 'pedestrian',
+    'human.pedestrian.child': 'pedestrian',
+    'human.pedestrian.construction_worker': 'pedestrian',
+    'human.pedestrian.police_officer': 'pedestrian',
+    'movable_object.trafficcone': 'traffic_cone',
+    'vehicle.trailer': 'trailer',
+    'vehicle.truck': 'truck'
+}
 
 nus_categories = ('car', 'truck', 'trailer', 'bus', 'construction_vehicle',
                   'bicycle', 'motorcycle', 'pedestrian', 'traffic_cone',
@@ -513,13 +529,13 @@ def get_2d_boxes(nusc,
             repro_rec['velo_cam3d'] = velo
 
             center3d = np.array(loc).reshape([1, 3])
-            center2d = points_cam2img(
-                center3d, camera_intrinsic, with_depth=True)
-            repro_rec['center2d'] = center2d.squeeze().tolist()
+            # center2d = points_cam2img(
+            #     center3d, camera_intrinsic, with_depth=True)
+            # repro_rec['center2d'] = center2d.squeeze().tolist()
             # normalized center2D + depth
             # if samples with depth < 0 will be removed
-            if repro_rec['center2d'][2] <= 0:
-                continue
+            # if repro_rec['center2d'][2] <= 0:
+            #     continue
 
             ann_token = nusc.get('sample_annotation',
                                  box.token)['attribute_tokens']
