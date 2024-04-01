@@ -23,19 +23,11 @@ The source code and models are available at https://github.com/SmartBot-PJLab/P3
 
 ## Results
 
-### SemanticKITTI test
+### NuScenes validation
 
 | $\mathrm{PQ}$ | $\mathrm{PQ^{\dagger}}$ | $\mathrm{RQ}$ | $\mathrm{SQ}$ | $\mathrm{PQ}^{\mathrm{Th}}$ | $\mathrm{PQ}^{\mathrm{St}}$ | Download | Config |
 | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: |
-| 65.3 | 67.8 | 74.9 | 86.6 | 67.4 | 63.7 | [model](https://drive.google.com/drive/folders/1RBDWV-oWOQsDAhNE8Z7SMLWsriLrpWCx?usp=sharing) | [config](https://github.com/SmartBot-PJLab/P3Former/blob/semantickitti/configs/p3former/p3former_8xb2_3x_semantickitti_trainval.py) |
-
-### SemanticKITTI validation
-
-| $\mathrm{PQ}$ | $\mathrm{PQ^{\dagger}}$ | $\mathrm{RQ}$ | $\mathrm{SQ}$ | $\mathrm{PQ}^{\mathrm{Th}}$ | $\mathrm{PQ}^{\mathrm{St}}$ | Download | Config |
-| :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: |
-| 62.6 | 66.2 | 72.4 | 76.2 | 69.4 | 57.7 | [model](https://drive.google.com/drive/folders/1RBDWV-oWOQsDAhNE8Z7SMLWsriLrpWCx?usp=sharing) | [config](https://github.com/SmartBot-PJLab/P3Former/blob/semantickitti/configs/p3former/p3former_8xb2_3x_semantickitti.py) |
-
-* Pretraining a backbone is helpful to stablize the the training process and get slightly better results. You can pretrain a model with [config](https://github.com/SmartBot-PJLab/P3Former/blob/semantickitti/configs/cylinder3d/cylinder3d_8xb2_3x_semantickitti.py).
+| 75.1 | 77.7 | 83.6 | 89.5 | 75.3 | 75.9 | [model](https://drive.google.com/drive/folders/1RBDWV-oWOQsDAhNE8Z7SMLWsriLrpWCx?usp=sharing) | [config](https://github.com/SmartBot-PJLab/P3Former/blob/semantickitti/configs/p3former/p3former_8xb2_3x_semantickitti.py) |
 
 ## Installation
 
@@ -49,16 +41,29 @@ Please follow [install.sh](https://github.com/SmartBot-PJLab/P3Former/blob/main/
 
 ```text
 data/
-├── semantickitti
-│   ├── sequences
-│   │   ├── 00
-│   │   |   ├── labels
-│   │   |   ├── velodyne
-│   │   ├── 01
-│   │   ├── ...
-│   ├── semantickitti_infos_train.pkl
-│   ├── semantickitti_infos_val.pkl
-│   ├── semantickitti_infos_test.pkl
+└── nuscenes  
+    ├── Usual nuscenes folders (i.e. samples, sweep)
+    │
+    ├── lidarseg
+    │   └── v1.0-{mini, test, trainval} <- Contains the .bin files; a .bin file 
+    │                                      contains the labels of the points in a 
+    │                                      point cloud (note that v1.0-test does not 
+    │                                      have any .bin files associated with it)
+    │
+    ├── panoptic
+    │   └── v1.0-{mini, test, trainval} <- Contains the *_panoptic.npz files; a .npz file 
+    │                                      contains the panoptic labels of the points in a 
+    │                                      point cloud (note that v1.0-test does not 
+    │                                      have any .npz files associated with it) 
+    ├── v1.0-{mini, test, trainval}
+    │   ├── Usual files (e.g. attribute.json, calibrated_sensor.json etc.)
+    │   ├── lidarseg.json  <- contains the mapping of each .bin file to the token
+    │   ├── panoptic.json  <- contains the mapping of each .npz file to the token       
+    │   └── category.json  <- contains the categories of the labels (note that the 
+    │                         category.json from nuScenes v1.0 is overwritten)
+    ├── nuscenes_infos_train.pkl
+    ├── nuscenes_infos_val.pkl
+    └── nuscenes_infos_test.pkl
 
 ```
 
