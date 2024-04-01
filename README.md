@@ -78,9 +78,7 @@ You can generate *.pkl by excuting
 
 ```
 python tools/create_data.py semantickitti --root-path data/semantickitti --out-dir data/semantickitti --extra-tag semantickitti
-```
-
-python tools/create_data.py nuscenes --root-path data/nuscenes --out-dir data/nuscenes --extra-tag nuscenes
+``
 
 ## Training and testing
 
