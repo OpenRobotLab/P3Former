@@ -27,11 +27,11 @@ The source code and models are available at https://github.com/SmartBot-PJLab/P3
 
 | $\mathrm{PQ}$ | $\mathrm{PQ^{\dagger}}$ | $\mathrm{RQ}$ | $\mathrm{SQ}$ | $\mathrm{PQ}^{\mathrm{Th}}$ | $\mathrm{PQ}^{\mathrm{St}}$ | Download | Config |
 | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: |
-| 75.1 | 77.7 | 83.6 | 89.5 | 75.3 | 75.9 | [model](https://drive.google.com/drive/folders/1RBDWV-oWOQsDAhNE8Z7SMLWsriLrpWCx?usp=sharing) | [config](https://github.com/SmartBot-PJLab/P3Former/blob/semantickitti/configs/p3former/p3former_8xb2_3x_semantickitti.py) |
+| 75.1 | 77.7 | 83.6 | 89.5 | 75.3 | 75.9 | [model](https://drive.google.com/file/d/1pC_bj5v4J5VsBgqNv6rQTzMNVSJltUKN/view?usp=sharing) | [config](https://github.com/OpenRobotLab/P3Former/blob/nuscene_oldversion_det3d/configs/seg/p3former/nuscenes/4x4_40e_6layer_256dim.py) |
 
 ## Installation
 
-Please follow [requirement.txt](https://github.com/SmartBot-PJLab/P3Former/blob/main/install.sh).
+Please follow [requirement.txt](https://github.com/OpenRobotLab/P3Former/blob/nuscene_oldversion_det3d/requirements.txt).
 
 ## Usage
 
